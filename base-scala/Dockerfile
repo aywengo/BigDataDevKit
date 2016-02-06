@@ -7,7 +7,7 @@ RUN curl -sL https://deb.nodesource.com/setup_5.x | bash - ; apt-get -y install 
 COPY *.txt /
 RUN wget --progress=dot:giga --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "$(cat myjdk.txt 2>/dev/null || cat jdk.txt)" 
 RUN wget --progress=dot:giga $(cat myide.txt || cat ide.txt)
-RUN mkdir /usr/java ; tar xzvf jdk-*.tar.gz -C /usr/java ; tar xzvf ideaIC-*.tar.gz -C /usr/java ; rm *.tar.gz 
+RUN mkdir /usr/java ; tar xzvf jdk-*.tar.gz -C /usr/java ; tar xzvf ideaIU-*.tar.gz -C /usr/java ; rm *.tar.gz 
 RUN ( echo export JAVA_HOME=$(ls -1d /usr/java/jdk*) ; echo export IDEA_HOME=$(ls -1d /usr/java/idea*) ; echo PATH='$JAVA_HOME/bin:$IDEA_HOME/bin:/usr/local/bin:$PATH' )>/etc/profile.d/java.sh
 COPY system.jwmrc /etc/jwm/system.jwmrc
 COPY sbt-launch.jar idea /usr/bin/
